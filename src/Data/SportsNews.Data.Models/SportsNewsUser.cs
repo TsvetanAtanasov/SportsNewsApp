@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace SportsNews.Web.Areas.Identity.Data
+namespace SportsNews.Web.Areas.Identity.Data    
 {
     // Add profile data for application users by adding properties to the SportsNewsUser class
     public class SportsNewsUser : IdentityUser

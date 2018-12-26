@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Data.Models", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Data", "Data\SportsNews.Data\SportsNews.Data.csproj", "{03B0B727-D76C-460B-9F85-4ABFA29E29FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7137684F-5268-41C2-A11F-FC05ED31A962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Tests\Sandbox\Sandbox.csproj", "{3A59539D-0E65-4310-9227-3266D5E25142}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A59539D-0E65-4310-9227-3266D5E25142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A59539D-0E65-4310-9227-3266D5E25142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A59539D-0E65-4310-9227-3266D5E25142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A59539D-0E65-4310-9227-3266D5E25142}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{24F4148B-86BB-4410-B67F-D3ED0FCF8CF7} = {8E179A6C-32A6-4F1D-B3EC-2C61D997E215}
 		{F53F3414-D75B-477F-9D18-2FA5A6A6BE09} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA} = {D13232C4-9AEF-4530-8383-09154B8DA876}
+		{3A59539D-0E65-4310-9227-3266D5E25142} = {7137684F-5268-41C2-A11F-FC05ED31A962}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78BF448D-28BA-432E-943F-89D292F00855}
