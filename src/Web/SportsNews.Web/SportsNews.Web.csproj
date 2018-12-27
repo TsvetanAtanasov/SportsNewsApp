@@ -12,8 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\SportsNews.Data.Common\SportsNews.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SportsNews.Data.Models\SportsNews.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\SportsNews.Data\SportsNews.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

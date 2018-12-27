@@ -8,8 +8,17 @@ using SportsNews.Web.Models;
 
 namespace SportsNews.Web.Controllers
 {
+    using Data.Common;
+    using Data.Models;
+
     public class HomeController : Controller
     {
+        private IRepository<Article> articlesRepository;
+
+        public HomeController(IRepository<Article> articlesRepository)
+        {
+            this.articlesRepository = articlesRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -17,7 +26,7 @@ namespace SportsNews.Web.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = $"My application has {this.articlesRepository.All().Count()} articles.";
 
             return View();
         }

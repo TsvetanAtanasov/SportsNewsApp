@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7137684F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Tests\Sandbox\Sandbox.csproj", "{3A59539D-0E65-4310-9227-3266D5E25142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Data.Common", "Data\SportsNews.Data.Common\SportsNews.Data.Common.csproj", "{7147607D-9CC9-4E75-9112-5A155852A9DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3A59539D-0E65-4310-9227-3266D5E25142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A59539D-0E65-4310-9227-3266D5E25142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A59539D-0E65-4310-9227-3266D5E25142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7147607D-9CC9-4E75-9112-5A155852A9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7147607D-9CC9-4E75-9112-5A155852A9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7147607D-9CC9-4E75-9112-5A155852A9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7147607D-9CC9-4E75-9112-5A155852A9DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{F53F3414-D75B-477F-9D18-2FA5A6A6BE09} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 		{3A59539D-0E65-4310-9227-3266D5E25142} = {7137684F-5268-41C2-A11F-FC05ED31A962}
+		{7147607D-9CC9-4E75-9112-5A155852A9DE} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78BF448D-28BA-432E-943F-89D292F00855}

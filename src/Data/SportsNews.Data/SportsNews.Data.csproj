@@ -12,6 +12,7 @@
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SportsNews.Data.Common\SportsNews.Data.Common.csproj" />
     <ProjectReference Include="..\SportsNews.Data.Models\SportsNews.Data.Models.csproj" />
   </ItemGroup>
 

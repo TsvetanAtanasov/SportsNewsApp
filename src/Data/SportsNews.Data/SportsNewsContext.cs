@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SportsNews.Data.Models;
 using SportsNews.Web.Areas.Identity.Data;
 
 namespace SportsNews.Web.Models
@@ -15,6 +16,10 @@ namespace SportsNews.Web.Models
             : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

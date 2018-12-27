@@ -16,6 +16,9 @@ using SportsNews.Web.Areas.Identity.Data;
 
 namespace SportsNews.Web
 {
+    using Data;
+    using Data.Common;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -53,6 +56,10 @@ namespace SportsNews.Web
                 .AddEntityFrameworkStores<SportsNewsContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Application services
+
+            services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
