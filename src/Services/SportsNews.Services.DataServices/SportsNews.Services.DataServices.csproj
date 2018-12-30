@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\SportsNews.Data.Common\SportsNews.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\SportsNews.Data.Models\SportsNews.Data.Models.csproj" />
+    <ProjectReference Include="..\SportsNews.Services.Models\SportsNews.Services.Models.csproj" />
+  </ItemGroup>
+
+</Project>

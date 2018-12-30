@@ -10,23 +10,30 @@ namespace SportsNews.Web.Controllers
 {
     using Data.Common;
     using Data.Models;
+    using Services.DataServices;
+    using Services.Models.Home;
 
     public class HomeController : Controller
     {
-        private IRepository<Article> articlesRepository;
+        private readonly IArticlesService articlesService;
 
-        public HomeController(IRepository<Article> articlesRepository)
+        public HomeController(IArticlesService articlesService)
         {
-            this.articlesRepository = articlesRepository;
+            this.articlesService = articlesService;
         }
         public IActionResult Index()
         {
-            return View();
+            var articles = this.articlesService.GetArticles();
+            var viewModel = new IndexViewModel
+            {
+                Articles = articles
+            };
+            return View(viewModel);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = $"My application has {this.articlesRepository.All().Count()} articles.";
+            ViewData["Message"] = $"My application has {this.articlesService.GetCount()} articles.";
 
             return View();
         }

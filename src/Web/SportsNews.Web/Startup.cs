@@ -18,6 +18,7 @@ namespace SportsNews.Web
 {
     using Data;
     using Data.Common;
+    using Services.DataServices;
 
     public class Startup
     {
@@ -60,6 +61,7 @@ namespace SportsNews.Web
             //Application services
 
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+            services.AddScoped<IArticlesService, ArticlesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
