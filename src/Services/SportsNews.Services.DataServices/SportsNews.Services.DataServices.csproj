@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SportsNews.Data.Common\SportsNews.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SportsNews.Data.Models\SportsNews.Data.Models.csproj" />
+    <ProjectReference Include="..\SportsNews.Services.Mapping\SportsNews.Services.Mapping.csproj" />
     <ProjectReference Include="..\SportsNews.Services.Models\SportsNews.Services.Models.csproj" />
   </ItemGroup>
 

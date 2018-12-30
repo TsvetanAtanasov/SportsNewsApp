@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Data.Common;
     using Data.Models;
+    using Mapping;
     using SportsNews.Services.Models.Articles;
     using SportsNews.Services.Models.Home;
 
@@ -36,12 +37,7 @@
         public IEnumerable<ArticleViewModel> GetArticles()
         {
             var articles = this.articlesRepository.All()
-                .Select(x => new ArticleViewModel
-                {
-                    Id = x.Id,
-                    Content = x.Content,
-                    CategoryName = x.Category.Name
-                }).ToList();
+                .To<ArticleViewModel>().ToList();
 
             return articles;
         }
@@ -53,11 +49,7 @@
 
         public ArticleDetailsViewModel GetArticleById(int id)
         {
-            var article = this.articlesRepository.All().Where(x => x.Id == id).Select(x => new ArticleDetailsViewModel
-            {
-                Content = x.Content,
-                CategoryName = x.Category.Name
-            }).FirstOrDefault();
+            var article = this.articlesRepository.All().Where(x => x.Id == id).To<ArticleDetailsViewModel>().FirstOrDefault();
 
             return article;
         }

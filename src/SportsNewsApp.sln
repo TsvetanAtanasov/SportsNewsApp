@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsNews.Data.Common", "D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{53BAF377-0A97-4288-8486-B58B7A0D2DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Services.DataServices", "Services\SportsNews.Services.DataServices\SportsNews.Services.DataServices.csproj", "{51CA15C4-7B43-4DAD-9D22-001E5AEEC5F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsNews.Services.DataServices", "Services\SportsNews.Services.DataServices\SportsNews.Services.DataServices.csproj", "{51CA15C4-7B43-4DAD-9D22-001E5AEEC5F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Services.Models", "Services\SportsNews.Services.Models\SportsNews.Services.Models.csproj", "{33FD253F-F888-4ADA-B27B-0D351977BFBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsNews.Services.Models", "Services\SportsNews.Services.Models\SportsNews.Services.Models.csproj", "{33FD253F-F888-4ADA-B27B-0D351977BFBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsNews.Services.Mapping", "Services\SportsNews.Services.Mapping\SportsNews.Services.Mapping.csproj", "{8DB361B6-7DA4-4BF9-91A9-A569AFD79466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{33FD253F-F888-4ADA-B27B-0D351977BFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33FD253F-F888-4ADA-B27B-0D351977BFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33FD253F-F888-4ADA-B27B-0D351977BFBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB361B6-7DA4-4BF9-91A9-A569AFD79466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB361B6-7DA4-4BF9-91A9-A569AFD79466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB361B6-7DA4-4BF9-91A9-A569AFD79466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB361B6-7DA4-4BF9-91A9-A569AFD79466}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,9 +75,9 @@ Global
 		{03B0B727-D76C-460B-9F85-4ABFA29E29FA} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 		{3A59539D-0E65-4310-9227-3266D5E25142} = {7137684F-5268-41C2-A11F-FC05ED31A962}
 		{7147607D-9CC9-4E75-9112-5A155852A9DE} = {D13232C4-9AEF-4530-8383-09154B8DA876}
-		{53BAF377-0A97-4288-8486-B58B7A0D2DEB} = {D13232C4-9AEF-4530-8383-09154B8DA876}
 		{51CA15C4-7B43-4DAD-9D22-001E5AEEC5F5} = {53BAF377-0A97-4288-8486-B58B7A0D2DEB}
 		{33FD253F-F888-4ADA-B27B-0D351977BFBE} = {53BAF377-0A97-4288-8486-B58B7A0D2DEB}
+		{8DB361B6-7DA4-4BF9-91A9-A569AFD79466} = {53BAF377-0A97-4288-8486-B58B7A0D2DEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78BF448D-28BA-432E-943F-89D292F00855}

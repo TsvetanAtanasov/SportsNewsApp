@@ -19,6 +19,9 @@ namespace SportsNews.Web
     using Data;
     using Data.Common;
     using Services.DataServices;
+    using Services.Mapping;
+    using Services.Models.Articles;
+    using Services.Models.Home;
 
     public class Startup
     {
@@ -32,6 +35,11 @@ namespace SportsNews.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(IndexViewModel).Assembly,
+                typeof(CreateArticleInputModel).Assembly
+                );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

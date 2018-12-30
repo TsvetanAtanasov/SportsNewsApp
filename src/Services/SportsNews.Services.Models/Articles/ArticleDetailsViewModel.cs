@@ -1,6 +1,9 @@
 ﻿namespace SportsNews.Services.Models.Articles
 {
-    public class ArticleDetailsViewModel
+    using Data.Models;
+    using Mapping;
+
+    public class ArticleDetailsViewModel : IMapFrom<Article>
     {
         public string Content { get; set; }
 
