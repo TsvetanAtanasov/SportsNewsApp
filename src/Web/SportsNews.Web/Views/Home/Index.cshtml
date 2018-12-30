@@ -5,6 +5,9 @@
 
 @foreach (var article in Model.Articles)
 {
-    <p>@article.Content</p>
+    <div class="panel-footer">
+        @article.CategoryName
+        <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+    </div>
 }
 

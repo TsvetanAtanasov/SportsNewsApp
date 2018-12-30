@@ -1,4 +1,6 @@
-﻿namespace SportsNews.Web.Models
+using System;
+
+namespace SportsNews.Services.Models
 {
     public class ErrorViewModel
     {

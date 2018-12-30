@@ -12,6 +12,7 @@ namespace SportsNews.Web.Controllers
     using Data.Models;
     using Services.DataServices;
     using Services.Models.Home;
+    using SportsNews.Services.Models;
 
     public class HomeController : Controller
     {
@@ -34,13 +35,6 @@ namespace SportsNews.Web.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = $"My application has {this.articlesService.GetCount()} articles.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }
