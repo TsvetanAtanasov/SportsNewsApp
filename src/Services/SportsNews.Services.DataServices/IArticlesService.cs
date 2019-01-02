@@ -16,5 +16,7 @@ namespace SportsNews.Services.DataServices
         Task<int> Create(int categoryId, string content);
 
         TViewModel GetArticleById<TViewModel>(int id);
+
+        IEnumerable<ArticleSimpleViewModel> GetAllByCategory(int categoryId);
     }
 }

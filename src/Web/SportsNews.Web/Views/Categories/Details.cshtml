@@ -1,0 +1,12 @@
+﻿@model List<SportsNews.Services.Models.Articles.ArticleSimpleViewModel>
+@{
+    ViewData["Title"] = "Categories Details";
+}
+
+<div class="container">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <a asp-controller="Articles" asp-action="Details" asp-route-id="@Model[i].Id">@Model[i].Content</a>
+        <hr />
+    }
+</div>

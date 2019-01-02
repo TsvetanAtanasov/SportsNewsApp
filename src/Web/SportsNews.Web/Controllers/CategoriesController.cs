@@ -9,10 +9,12 @@
     public class CategoriesController : BaseController
     {
         private readonly ICategoriesService categoriesService;
+        private readonly IArticlesService articlesService;
 
-        public CategoriesController(ICategoriesService categoriesService)
+        public CategoriesController(ICategoriesService categoriesService, IArticlesService articlesService)
         {
             this.categoriesService = categoriesService;
+            this.articlesService = articlesService;
         }
 
         public IActionResult Index()
@@ -24,7 +26,9 @@
 
         public IActionResult Details(int id)
         {
-           throw new NotImplementedException();
+            var articlesInCategory = this.articlesService.GetAllByCategory(id).ToList();
+
+            return this.View(articlesInCategory);
         }
     }
 }

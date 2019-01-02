@@ -53,6 +53,15 @@
 
             return article;
         }
+
+        public IEnumerable<ArticleSimpleViewModel> GetAllByCategory(int categoryId)
+        {
+            var articles = this.articlesRepository.All()
+                .Where(x => x.CategoryId == categoryId)
+                .To<ArticleSimpleViewModel>().ToList();
+
+            return articles;
+        }
     }
     
 }
