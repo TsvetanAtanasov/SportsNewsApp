@@ -44,7 +44,7 @@
 
         public IActionResult Details(int id)
         {
-            var article = this.articlesService.GetArticleById(id);
+            var article = this.articlesService.GetArticleById<ArticleDetailsViewModel>(id);
             return this.View(article);
         }
     }

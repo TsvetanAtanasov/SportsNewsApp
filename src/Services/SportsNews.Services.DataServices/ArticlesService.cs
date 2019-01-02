@@ -47,9 +47,9 @@
             return this.articlesRepository.All().Count();
         }
 
-        public ArticleDetailsViewModel GetArticleById(int id)
+        public TViewModel GetArticleById<TViewModel>(int id)
         {
-            var article = this.articlesRepository.All().Where(x => x.Id == id).To<ArticleDetailsViewModel>().FirstOrDefault();
+            var article = this.articlesRepository.All().Where(x => x.Id == id).To<TViewModel>().FirstOrDefault();
 
             return article;
         }

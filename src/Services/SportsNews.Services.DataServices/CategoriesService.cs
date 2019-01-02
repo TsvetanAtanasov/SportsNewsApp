@@ -16,10 +16,10 @@ namespace SportsNews.Services.DataServices
             this.categoriesRepository = categoriesRepository;
         }
 
-        public IEnumerable<IdAndNameViewModel> GetAll()
+        public IEnumerable<CategoryIdAndNameViewModel> GetAll()
         {
             var categories = this.categoriesRepository.All().OrderBy(x => x.Name)
-                .Select(x => new IdAndNameViewModel{ Id = x.Id, Name = x.Name }).ToList();
+                .Select(x => new CategoryIdAndNameViewModel{ Id = x.Id, Name = x.Name }).ToList();
             return categories;
         }
 

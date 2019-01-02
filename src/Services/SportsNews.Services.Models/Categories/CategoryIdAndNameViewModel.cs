@@ -1,6 +1,6 @@
 ﻿namespace SportsNews.Services.Models.Categories
 {
-    public class IdAndNameViewModel
+    public class CategoryIdAndNameViewModel
     {
         public int Id { get; set; }
 
