@@ -18,6 +18,7 @@ namespace SportsNews.Web
 {
     using Data;
     using Data.Common;
+    using MiddleWares;
     using Services.DataServices;
     using Services.Mapping;
     using Services.Models.Articles;
@@ -52,7 +53,7 @@ namespace SportsNews.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<SportsNewsUser>(
+            services.AddIdentity<SportsNewsUser, IdentityRole>(
                     options =>
                     {
                         options.Password.RequiredLength = 6;
@@ -62,6 +63,7 @@ namespace SportsNews.Web
                         options.Password.RequireDigit = false;
                     }
                     )
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<SportsNewsContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -90,9 +92,8 @@ namespace SportsNews.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseMiddleware<SeedAdminMiddleware>();
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
