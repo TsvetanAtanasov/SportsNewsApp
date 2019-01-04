@@ -1,0 +1,34 @@
+﻿@model SportsNews.Web.Models.Comments.CreateCommentInputModel
+
+@{
+    ViewData["Title"] = "Create Comment";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-full">
+        <div class="respond">
+            <form asp-controller="Comments" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <fieldset>
+                    <h4>Add Comment</h4>
+                    <hr />
+                    @*<div class="form-field">
+                        <label asp-for="@Model.ArticleId"></label>
+                        <input asp-for="@Model.ArticleId" class="full-width" value="" />
+                        <span asp-validation-for="@Model.ArticleId" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-field">
+                        <label asp-for="@Model.Content"></label>
+                        <input asp-for="@Model.Content" class="full-width" value="" />
+                        <span asp-validation-for="@Model.Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Add Comment</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

@@ -27,11 +27,13 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
-    
-    <a asp-controller="Articles"asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">  
-        <i class="glyphicon glyphicon-pencil"></i>  Edit  
-    </a>  
-    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick ="return confirm('Are you sure you wish to delete ?');">  
-        <i class="glyphicon glyphicon-trash"></i>  Delete  
-    </a> 
+    <a asp-controller="Comments" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Create Comment
+    </a>
+    <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Edit
+    </a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete ?');">
+        <i class="glyphicon glyphicon-trash"></i>  Delete
+    </a>
 </div>
