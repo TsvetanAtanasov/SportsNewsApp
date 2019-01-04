@@ -10,5 +10,7 @@ namespace SportsNews.Services.Models.Home
         public string Content { get; set; }
 
         public string CategoryName { get; set; }
+
+        public int CategoryId { get; set; }
     }
 }

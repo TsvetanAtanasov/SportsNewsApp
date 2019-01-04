@@ -62,6 +62,15 @@
 
             return articles;
         }
+
+        public async Task Update(int articleId, string content, int categoryId)
+        {
+            var article = this.articlesRepository.All().FirstOrDefault(x => x.Id == articleId);
+            article.Content = content;
+            article.CategoryId = categoryId;
+            this.articlesRepository.Update(article);
+            await this.articlesRepository.SaveChangesAsync();
+        }
     }
     
 }

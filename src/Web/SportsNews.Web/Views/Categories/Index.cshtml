@@ -4,6 +4,6 @@
     @for (int i = 0; i < Model.Count(); i++)
     {
         <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model[i].Id">@Model[i].Name</a>
-        <hr/>   
+        <hr />
     }
 </div>

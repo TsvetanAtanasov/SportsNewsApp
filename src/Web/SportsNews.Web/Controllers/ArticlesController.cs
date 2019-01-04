@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using SportsNews.Services.Models.Articles;
+    using Web.Models.Articles;
 
     public class ArticlesController : BaseController
     {
@@ -40,6 +41,38 @@
 
             var id = await this.articlesService.Create(input.CategoryId,input.Content);
             return this.RedirectToAction("Details", new {id = id});
+        }
+
+        [Authorize]
+        public IActionResult Update(int id)
+        {
+            //this.ViewData["Article"] = this.articlesService.GetArticles()
+            //    .Where(x => x.Id == id)
+            //    .Select(x => new SelectListItem
+            //    {
+            //        Value = x.Id.ToString(),
+            //        Text = x.Content
+            //    });
+            var model = this.articlesService.GetArticles()
+                .Where(x => x.Id == id)
+                .Select(x => new UpdateArticleInputModel
+                {
+                    Content = x.Content,
+                    CategoryId = x.CategoryId
+                }).FirstOrDefault();
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateArticleInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            await this.articlesService.Update(input.Id, input.Content, input.CategoryId);
+            return this.RedirectToAction("Details", new { id = input.Id });
         }
 
         public IActionResult Details(int id)
