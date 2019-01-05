@@ -75,6 +75,14 @@
             return this.RedirectToAction("Details", new { id = input.Id });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            await this.articlesService.Delete(id);
+            return this.RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Details(int id)
         {
             var article = this.articlesService.GetArticleById<ArticleDetailsViewModel>(id);

@@ -71,6 +71,13 @@
             this.articlesRepository.Update(article);
             await this.articlesRepository.SaveChangesAsync();
         }
+
+        public async Task Delete(int id)
+        {
+            var article = this.articlesRepository.All().FirstOrDefault(x => x.Id == id);
+            this.articlesRepository.Delete(article);
+            await this.articlesRepository.SaveChangesAsync();
+        }
     }
     
 }
