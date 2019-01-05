@@ -31,6 +31,15 @@
                 @comment.Content
             </dd>
         }
+        <dt>
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+        @foreach (var image in Model.Images)
+        {
+            <dd>
+                <img src="@image.ImageUrl" alt="pic"/>
+            </dd>
+        }
     </dl>
 </div>
 <div>
@@ -42,13 +51,22 @@
     <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
         <i class="glyphicon glyphicon-pencil"></i>  Edit Article
     </a>
+    <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Add Image
+    </a>
+    <form asp-controller="Images" asp-action="Delete">
+        <div class="form-group">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+        </div>
+    </form>
     <form asp-action="Delete">
         <div class="form-group">
-            <input type="hidden" name="id" value="@Model.Id"/>
-            <input type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');"/>
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
         </div>
     </form>
     @*<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete ?');">
-        <i class="glyphicon glyphicon-trash"></i>  Delete Article
-    </a>*@
+            <i class="glyphicon glyphicon-trash"></i>  Delete Article
+        </a>*@
 </div>

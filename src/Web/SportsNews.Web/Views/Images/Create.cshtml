@@ -1,0 +1,29 @@
+﻿@model SportsNews.Web.Models.Images.CreateImageInputModel
+
+@{
+    ViewData["Title"] = "Create Comment";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-full">
+        <div class="respond">
+            <form asp-controller="Images" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <fieldset>
+                    <h4>Add Comment</h4>
+                    <hr />
+                    <div class="form-field">
+                        <label asp-for="@Model.ImageUrl"></label>
+                        <input asp-for="@Model.ImageUrl" class="full-width" value="" />
+                        <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Add Image</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
