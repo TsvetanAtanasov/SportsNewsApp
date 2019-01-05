@@ -41,8 +41,8 @@ namespace SportsNews.Web.Controllers
             }
 
             var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
-            await this.commentsService.Create(model.ArticleId, user.Id, model.Content);
-            return this.RedirectToAction("Details", new {id = model.ArticleId});
+            await this.commentsService.Create(id, user.Id, model.Content);
+            return this.RedirectToAction("Details", "Articles", new {id = id });
         }
     }
 }
