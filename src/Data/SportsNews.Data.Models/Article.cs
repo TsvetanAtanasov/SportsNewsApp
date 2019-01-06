@@ -10,6 +10,7 @@ namespace SportsNews.Data.Models
         {
             this.Comments = new List<Comment>();
             this.Images = new List<Image>();
+            this.Videos = new List<Video>();
         }
         public string Content { get; set; }
 
@@ -20,5 +21,7 @@ namespace SportsNews.Data.Models
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Image> Images { get; set; }
+
+        public ICollection<Video> Videos { get; set; }
     }
 }

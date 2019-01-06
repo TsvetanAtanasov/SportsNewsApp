@@ -37,7 +37,16 @@
         @foreach (var image in Model.Images)
         {
             <dd>
-                <img src="@image.ImageUrl" alt="pic"/>
+                <img src="@image.ImageUrl" alt="pic" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Videos)
+        </dt>
+        @foreach (var video in Model.Videos)
+        {
+            <dd>
+                <iframe width="560" height="315" src="@video.VideoUrl" frameborder="0" allowfullscreen></iframe>
             </dd>
         }
     </dl>
@@ -60,10 +69,19 @@
             <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
         </div>
     </form>
+    <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Add Video
+    </a>
+    <form asp-controller="Videos" asp-action="Delete">
+        <div class="form-group">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="submit" value="Delete Video" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+        </div>
+    </form>
     <form asp-action="Delete">
         <div class="form-group">
             <input type="hidden" name="id" value="@Model.Id" />
-            <input type="submit" value="Delete" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+            <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
         </div>
     </form>
     @*<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete ?');">

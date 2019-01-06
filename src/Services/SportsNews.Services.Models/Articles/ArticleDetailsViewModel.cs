@@ -5,6 +5,7 @@
     using Data.Models;
     using Images;
     using Mapping;
+    using Videos;
 
     public class ArticleDetailsViewModel : IMapFrom<Article>
     {
@@ -17,5 +18,7 @@
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public IEnumerable<ImageViewModel> Images { get; set; }
+
+        public IEnumerable<VideoViewModel> Videos { get; set; }
     }
 }
