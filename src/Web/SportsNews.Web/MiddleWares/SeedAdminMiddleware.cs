@@ -23,7 +23,6 @@ namespace SportsNews.Web.MiddleWares
         public async Task InvokeAsync(HttpContext context, IServiceProvider provider)
         {
             var userManager = provider.GetService<UserManager<SportsNewsUser>>();
-
             if (!userManager.Users.Any())
             {
                 var roleManager = provider.GetService<RoleManager<IdentityRole>>();
@@ -31,6 +30,16 @@ namespace SportsNews.Web.MiddleWares
                 if (!adminRoleExists)
                 {
                     var result = roleManager.CreateAsync(new IdentityRole("Administrator")).Result;
+                    if (!result.Succeeded)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+
+                var userRoleExists = roleManager.RoleExistsAsync("User").Result;
+                if (!userRoleExists)
+                {
+                    var result = roleManager.CreateAsync(new IdentityRole("User")).Result;
                     if (!result.Succeeded)
                     {
                         throw new InvalidOperationException();
