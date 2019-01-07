@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using SportsNews.Services.Models.Articles;
+    using SportsNews.Services.Models.Home;
     using Web.Models.Articles;
 
     public class ArticlesController : BaseController
@@ -19,6 +20,17 @@
             this.articlesService = articlesService;
             this.categoriesService = categoriesService;
         }
+
+        public IActionResult AllByCategory(int id)
+        {
+            var articles = this.articlesService.GetAllByCategory(id);
+            var viewModel = new IndexViewModel
+            {
+                Articles = articles
+            };
+            return this.View(viewModel);
+        }
+
         [Authorize]
         public IActionResult Create()
         {

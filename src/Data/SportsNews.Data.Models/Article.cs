@@ -12,6 +12,9 @@ namespace SportsNews.Data.Models
             this.Images = new List<Image>();
             this.Videos = new List<Video>();
         }
+
+        public string Title { get; set; }
+
         public string Content { get; set; }
 
         public int CategoryId { get; set; }

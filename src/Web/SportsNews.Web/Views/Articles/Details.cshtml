@@ -29,6 +29,13 @@
         {
             <dd>
                 @comment.Content
+                <form asp-controller="Comments" asp-action="Delete">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="commentId" value="@comment.Id"/>
+                        <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                    </div>
+                </form>
             </dd>
         }
         <dt>
@@ -38,6 +45,13 @@
         {
             <dd>
                 <img src="@image.ImageUrl" alt="pic" />
+                <form asp-controller="Images" asp-action="Delete">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="imageId" value="@image.Id" />
+                        <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                    </div>
+                </form>
             </dd>
         }
         <dt>
@@ -47,6 +61,13 @@
         {
             <dd>
                 <iframe width="560" height="315" src="@video.VideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <form asp-controller="Videos" asp-action="Delete">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="hidden" name="videoId" value="@video.Id" />
+                        <input type="submit" value="Delete Video" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                    </div>
+                </form>
             </dd>
         }
     </dl>
@@ -63,21 +84,9 @@
     <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
         <i class="glyphicon glyphicon-pencil"></i>  Add Image
     </a>
-    <form asp-controller="Images" asp-action="Delete">
-        <div class="form-group">
-            <input type="hidden" name="id" value="@Model.Id" />
-            <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-        </div>
-    </form>
     <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
         <i class="glyphicon glyphicon-pencil"></i>  Add Video
     </a>
-    <form asp-controller="Videos" asp-action="Delete">
-        <div class="form-group">
-            <input type="hidden" name="id" value="@Model.Id" />
-            <input type="submit" value="Delete Video" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-        </div>
-    </form>
     <form asp-action="Delete">
         <div class="form-group">
             <input type="hidden" name="id" value="@Model.Id" />

@@ -29,5 +29,12 @@ namespace SportsNews.Services.DataServices
             await this.commentRepository.AddAsync(comment);
             await this.commentRepository.SaveChangesAsync();
         }
+
+        public async Task Delete(int id)
+        {
+            var comment = this.commentRepository.All().FirstOrDefault(x => x.Id == id);
+            this.commentRepository.Delete(comment);
+            await this.commentRepository.SaveChangesAsync();
+        }
     }
 }

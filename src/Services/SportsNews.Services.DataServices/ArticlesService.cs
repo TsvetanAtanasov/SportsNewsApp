@@ -54,11 +54,11 @@
             return article;
         }
 
-        public IEnumerable<ArticleSimpleViewModel> GetAllByCategory(int categoryId)
+        public IEnumerable<ArticleViewModel> GetAllByCategory(int categoryId)
         {
             var articles = this.articlesRepository.All()
                 .Where(x => x.CategoryId == categoryId)
-                .To<ArticleSimpleViewModel>().ToList();
+                .To<ArticleViewModel>().ToList();
 
             return articles;
         }

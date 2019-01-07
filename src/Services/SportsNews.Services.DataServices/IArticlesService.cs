@@ -17,7 +17,7 @@ namespace SportsNews.Services.DataServices
 
         TViewModel GetArticleById<TViewModel>(int id);
 
-        IEnumerable<ArticleSimpleViewModel> GetAllByCategory(int categoryId);
+        IEnumerable<ArticleViewModel> GetAllByCategory(int categoryId);
 
         Task Update(int articleId, string content, int categoryId);
 

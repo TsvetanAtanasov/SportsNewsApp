@@ -44,5 +44,13 @@ namespace SportsNews.Web.Controllers
             await this.commentsService.Create(id, user.Id, model.Content);
             return this.RedirectToAction("Details", "Articles", new {id = id });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, int commentId)
+        {
+
+            await this.commentsService.Delete(commentId);
+            return this.RedirectToAction("Details", "Articles", new { id = id });
+        }
     }
 }

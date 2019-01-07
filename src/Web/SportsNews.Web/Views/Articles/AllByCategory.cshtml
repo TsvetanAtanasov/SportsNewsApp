@@ -1,0 +1,11 @@
+﻿@model SportsNews.Services.Models.Home.IndexViewModel
+
+@{
+    ViewData["Title"] = "Articls By Category";
+}
+
+@foreach (var article in Model.Articles)
+{
+    <h1>@article.Title</h1>
+    <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+}

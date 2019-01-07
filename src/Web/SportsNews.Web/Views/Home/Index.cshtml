@@ -5,9 +5,10 @@
 
 @foreach (var article in Model.Articles)
 {
-    <div class="panel-footer">
-        @article.CategoryName
-        <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
-    </div>
+<div class="panel-footer">
+    @article.CategoryName
+    <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="AllByCategory" asp-route-id="@article.CategoryId">View Articles</a>
+    @*<a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>*@
+</div>
 }
 

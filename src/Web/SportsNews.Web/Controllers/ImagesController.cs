@@ -34,10 +34,10 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id, int imageId)
         {
 
-            await this.imagesService.Delete(id);
+            await this.imagesService.Delete(imageId);
             return this.RedirectToAction("Details", "Articles", new { id = id });
         }
     }
