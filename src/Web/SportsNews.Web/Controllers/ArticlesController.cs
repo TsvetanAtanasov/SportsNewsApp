@@ -46,13 +46,6 @@
         [Authorize]
         public IActionResult Update(int id)
         {
-            //this.ViewData["Article"] = this.articlesService.GetArticles()
-            //    .Where(x => x.Id == id)
-            //    .Select(x => new SelectListItem
-            //    {
-            //        Value = x.Id.ToString(),
-            //        Text = x.Content
-            //    });
             var model = this.articlesService.GetArticles()
                 .Where(x => x.Id == id)
                 .Select(x => new UpdateArticleInputModel

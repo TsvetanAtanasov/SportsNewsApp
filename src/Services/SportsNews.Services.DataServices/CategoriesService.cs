@@ -4,6 +4,7 @@ using SportsNews.Services.Models.Categories;
 namespace SportsNews.Services.DataServices
 {
     using System.Linq;
+    using System.Threading.Tasks;
     using Data.Common;
     using Data.Models;
 
@@ -14,6 +15,17 @@ namespace SportsNews.Services.DataServices
         public CategoriesService(IRepository<Category> categoriesRepository)
         {
             this.categoriesRepository = categoriesRepository;
+        }
+
+        public async Task Create(string name)
+        {
+            var category = new Category()
+            {
+                Name = name
+            };
+
+            await this.categoriesRepository.AddAsync(category);
+            await this.categoriesRepository.SaveChangesAsync();
         }
 
         public IEnumerable<CategoryIdAndNameViewModel> GetAll()

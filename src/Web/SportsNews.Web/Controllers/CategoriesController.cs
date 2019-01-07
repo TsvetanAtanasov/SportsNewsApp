@@ -2,9 +2,12 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services.Controllers;
     using Services.DataServices;
+    using SportsNews.Web.Models.Categories;
 
     public class CategoriesController : BaseController
     {
@@ -15,6 +18,24 @@
         {
             this.categoriesService = categoriesService;
             this.articlesService = articlesService;
+        }
+
+        [Authorize]
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCategoryInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            await this.categoriesService.Create(input.Name);
+            return this.RedirectToAction("Index","Home");
         }
 
         public IActionResult Index()
