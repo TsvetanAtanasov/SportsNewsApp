@@ -4,80 +4,120 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+@*<div>
+        <h4>ArticleDetailsViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+            @foreach (var comment in Model.Comments)
+            {
+                <dd>
+                    @comment.Content
+                    <form asp-controller="Comments" asp-action="Delete">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <input type="hidden" name="commentId" value="@comment.Id"/>
+                            <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                        </div>
+                    </form>
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Images)
+            </dt>
+            @foreach (var image in Model.Images)
+            {
+                <dd>
+                    <img src="@image.ImageUrl" alt="pic" />
+                    <form asp-controller="Images" asp-action="Delete">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <input type="hidden" name="imageId" value="@image.Id" />
+                            <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                        </div>
+                    </form>
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Videos)
+            </dt>
+            @foreach (var video in Model.Videos)
+            {
+                <dd>
+                    <iframe width="560" height="315" src="@video.VideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <form asp-controller="Videos" asp-action="Delete">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <input type="hidden" name="videoId" value="@video.Id" />
+                            <input type="submit" value="Delete Video" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                        </div>
+                    </form>
+                </dd>
+            }
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+        <a asp-controller="Comments" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+            <i class="glyphicon glyphicon-pencil"></i>  Create Comment
+        </a>
+        <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
+            <i class="glyphicon glyphicon-pencil"></i>  Edit Article
+        </a>
+        <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+            <i class="glyphicon glyphicon-pencil"></i>  Add Image
+        </a>
+        <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+            <i class="glyphicon glyphicon-pencil"></i>  Add Video
+        </a>
+        <form asp-action="Delete">
+            <div class="form-group">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+            </div>
+        </form>
+        @*<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete ?');">
+                <i class="glyphicon glyphicon-trash"></i>  Delete Article
+            </a>
+    </div>*@
+<section class="s-content s-content--narrow s-content--no-padding-bottom">
 
-<div>
-    <h4>ArticleDetailsViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
-        @foreach (var comment in Model.Comments)
-        {
-            <dd>
-                @comment.Content
-                <form asp-controller="Comments" asp-action="Delete">
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="@Model.Id" />
-                        <input type="hidden" name="commentId" value="@comment.Id"/>
-                        <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-                    </div>
-                </form>
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        @foreach (var image in Model.Images)
-        {
-            <dd>
-                <img src="@image.ImageUrl" alt="pic" />
-                <form asp-controller="Images" asp-action="Delete">
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="@Model.Id" />
-                        <input type="hidden" name="imageId" value="@image.Id" />
-                        <input type="submit" value="Delete Image" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-                    </div>
-                </form>
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Videos)
-        </dt>
-        @foreach (var video in Model.Videos)
-        {
-            <dd>
-                <iframe width="560" height="315" src="@video.VideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <form asp-controller="Videos" asp-action="Delete">
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="@Model.Id" />
-                        <input type="hidden" name="videoId" value="@video.Id" />
-                        <input type="submit" value="Delete Video" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-                    </div>
-                </form>
-            </dd>
-        }
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-    <a asp-controller="Comments" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
-        <i class="glyphicon glyphicon-pencil"></i>  Create Comment
-    </a>
+    <article class="row format-standard">
+
+        <div class="s-content__header col-full">
+            <h1 class="s-content__header-title">
+                @Model.Title
+            </h1>
+        </div> <!-- end s-content__header -->
+
+        <div class="col-full s-content__main">
+
+            <p class="lead">
+                @Model.Content
+            </p>
+            <p>
+                <img src="https://www.maxim.com/.image/t_share/MTU0NjkxNTcyNjkxMTE3NDgw/conor-mcgregor-promo.jpg"
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+            </p>
+
+
+        </div> <!-- end s-content__main -->
+        <div>
     <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
         <i class="glyphicon glyphicon-pencil"></i>  Edit Article
     </a>
@@ -93,7 +133,43 @@
             <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
         </div>
     </form>
-    @*<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete ?');">
-            <i class="glyphicon glyphicon-trash"></i>  Delete Article
-        </a>*@
-</div>
+    </div>
+
+    </article>
+
+
+    <!-- comments
+    ================================================== -->
+    <div class="comments-wrap">
+
+        <div id="comments" class="row">
+            <div class="col-full">
+
+                <h3 class="h2">2 Comments</h3>
+
+                <!-- commentlist -->
+                <ol class="commentlist">
+                @foreach (var comment in Model.Comments)
+                {
+                    <li class="depth-1 comment">
+                        <div class="comment__content">
+
+                            <div class="comment__info">
+                                <cite>@comment.UserUsername</cite>
+                            </div>
+
+                            <div class="comment__text">
+                                Comment: <p>@comment.Content</p>
+                            </div>
+
+                        </div>
+
+                    </li> <!-- end comment level 1 -->
+                }
+                
+                </ol>
+            </div> <!-- end comments-wrap -->
+        </div>
+    </div>
+
+</section> <!-- s-content -->

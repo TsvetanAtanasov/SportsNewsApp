@@ -4,7 +4,7 @@
 
     public class Video : BaseModel<int>
     {
-        public string VideoUrl { get; set; }
+        public string Url { get; set; }
 
         public int ArticleId { get; set; }
 

@@ -1,14 +1,47 @@
 ﻿@model SportsNews.Services.Models.Home.IndexViewModel
-@{
-    ViewData["Title"] = "Home Page";
-}
+    @{
+        ViewData["Title"] = "All Categories";
+    }
 
-@foreach (var article in Model.Articles)
-{
-<div class="panel-footer">
-    @article.CategoryName
-    <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="AllByCategory" asp-route-id="@article.CategoryId">View Articles</a>
-    @*<a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>*@
+    @*@foreach (var article in Model.Articles)
+    {
+    <div class="panel-footer">
+        @article.CategoryName
+        <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="AllByCategory" asp-route-id="@article.CategoryId">View Articles</a>
+        <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+    </div>
+    }*@
+<div class="row narrow">
+    <div class="col-full s-content__header" data-aos="fade-up">
+        <h1>@ViewData["Title"]</h1>
+    </div>
 </div>
-}
 
+<div class="row masonry-wrap">
+    <div class="masonry">
+
+        <div class="grid-sizer"></div>
+        @foreach(var article in Model.Articles)
+        {
+            <article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+                <div class="entry__thumb">
+                    <a asp-controller="Articles" asp-action="AllByCategory" asp-route-id="@article.CategoryId" class="entry__thumb-link">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/2000px-UFC_logo.svg.png"
+                             srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/2000px-UFC_logo.svg.png 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/2000px-UFC_logo.svg.png 2x" alt="">
+                    </a>
+                </div>
+
+                <div class="entry__text">
+                    <div class="entry__header">
+
+                        
+                        <h1 class="entry__title"><a href="raheem.html">@article.CategoryName</a></h1>
+
+                    </div>
+                </div>
+
+            </article> <!-- end article -->
+        }
+    </div> <!-- end masonry -->
+</div> <!-- end masonry-wrap -->

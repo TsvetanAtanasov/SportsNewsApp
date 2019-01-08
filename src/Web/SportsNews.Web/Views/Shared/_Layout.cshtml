@@ -119,7 +119,7 @@
                             </ul>
                         </li>
                         <li><a href="style-guide.html" title="">Styles</a></li>
-                        <li class="current"><a href="about.html" title="">About</a></li>
+                        <li class="current"><a asp-controller="Home" asp-action="About" title="">About</a></li>
                         <li><a href="contact.html" title="">Contact</a></li>
                         <partial name="_LoginPartial" />
                     </ul> <!-- end header__nav -->
@@ -135,14 +135,39 @@
 
 <partial name="_CookieConsentPartial" />
     
-<div class="s-content s-content--narrow s-content--no-padding-bottom">
+<div class="s-content">
     @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; 2018 - SportsNews.Web</p>
-    </footer>
 </div>
+<footer class="s-footer">
+    <div class="s-footer__bottom">
+        <div class="row">
+            <div class="col-full">
+                <div class="s-footer__copyright">
+                    <span>© Copyright SportsNews 2018</span>
+                </div>
 
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"></a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end s-footer__bottom -->
+
+</footer> <!-- end s-footer -->
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader">
+        <div class="line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
 <environment include="Development">
     
     <script src="~/js/modernizr.js"></script>

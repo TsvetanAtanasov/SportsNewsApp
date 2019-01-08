@@ -34,7 +34,7 @@
                 return this.View(input);
             }
 
-            await this.categoriesService.Create(input.Name);
+            await this.categoriesService.Create(input.Name, input.Image);
             return this.RedirectToAction("Index","Home");
         }
 

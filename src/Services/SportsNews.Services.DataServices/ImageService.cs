@@ -19,7 +19,7 @@ namespace SportsNews.Services.DataServices
             var image = new Image()
             {
                 ArticleId = articleId,
-                ImageUrl = imageUrl
+                Url = imageUrl
             };
 
             await this.imageRepository.AddAsync(image);

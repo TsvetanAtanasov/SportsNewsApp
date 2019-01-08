@@ -1,11 +1,50 @@
 ﻿@model SportsNews.Services.Models.Home.IndexViewModel
 
 @{
-    ViewData["Title"] = "Articls By Category";
+    ViewData["Title"] = "Articles By Category";
 }
 
+@*@foreach (var article in Model.Articles)
+    {
+        <h1>@article.Title</h1>
+        @*<img src="@article.Image"/>
+        <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+    }*@
+<div class="row narrow">
+    <div class="col-full s-content__header" data-aos="fade-up">
+        <h1>Category: Football</h1>
+    </div>
+</div>
 @foreach (var article in Model.Articles)
 {
-    <h1>@article.Title</h1>
-    <a class="btn btn-default btn-sm" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+    <div class="row masonry-wrap">
+        <div class="masonry">
+
+            <div class="grid-sizer"></div>
+
+            <article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+                <div class="entry__thumb">
+                    <a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id" class="entry__thumb-link">
+                        <img src="@article.Images.FirstOrDefault().Url"
+                             srcset="@article.Images.FirstOrDefault().Url" alt="">
+                    </a>
+                </div>
+
+                <div class="entry__text">
+                    <div class="entry__header">
+
+                        <h1 class="entry__title"><a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">@article.Title</a></h1>
+
+                    </div>
+                    <div class="entry__excerpt">
+                        <p>
+                            @article.Content
+                        </p>
+                    </div>
+                </div>
+
+            </article> <!-- end article -->
+        </div> <!-- end masonry -->
+    </div> <!-- end masonry-wrap -->
 }

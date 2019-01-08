@@ -1,7 +1,49 @@
 ﻿@{
     ViewData["Title"] = "About";
+    Layout = "_LayoutHome";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<div class="pageheader-content row">
+    <div class="col-full">
 
-<p>Use this area to provide additional information.</p>
+        <div class="featured">
+
+            <div class="featured__column featured__column--big">
+                <div class="entry" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/10/Escudo_real_madrid_1941b.png');">
+
+                    <div class="entry__content">
+                        <span class="entry__category"><a href="football.html">Football</a></span>
+
+                        <h1><a href="#0" title="">See Latest News In The Football World</a></h1>
+                    </div> <!-- end entry__content -->
+
+                </div> <!-- end entry -->
+            </div> <!-- end featured__big -->
+
+            <div class="featured__column featured__column--small">
+
+                <div class="entry" style="background-image:url('https://i2.offnews.bg/events/2018/06/09/682306/php0imynx_800x*.jpg');">
+
+                    <div class="entry__content">
+                        <span class="entry__category"><a href="basketball.html">Basketball</a></span>
+
+                        <h1><a href="#0" title="">See Latest News In The Basketball World</a></h1>
+                    </div> <!-- end entry__content -->
+
+                </div> <!-- end entry -->
+
+                <div class="entry" style="background-image:url('http://blagoevgrad-news.com/wp-content/uploads/2018/03/%D0%B8%D0%B5.jpg');">
+
+                    <div class="entry__content">
+                        <span class="entry__category"><a href="martialArts.html">Ufc</a></span>
+
+                        <h1><a href="#0" title="">Information About The Biggest Company For Mixed Martial Arts</a></h1>
+                    </div> <!-- end entry__content -->
+
+                </div> <!-- end entry -->
+                <a asp-controller="Home" asp-action="Index" class="btn btn-info">
+                    <i class="entry__category entry__content"></i>  See All Categories
+                </a>
+            </div> <!-- end featured__small -->
+        </div> <!-- end featured -->
+    </div> <!-- end col-full -->
+</div> <!-- end pageheader-content row -->

@@ -22,7 +22,7 @@ namespace SportsNews.Services.DataServices
             var image = new Video()
             {
                 ArticleId = articleId,
-                VideoUrl = videoUrl
+                Url = videoUrl
             };
 
             await this.videosRepository.AddAsync(image);

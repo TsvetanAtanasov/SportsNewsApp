@@ -17,11 +17,12 @@ namespace SportsNews.Services.DataServices
             this.categoriesRepository = categoriesRepository;
         }
 
-        public async Task Create(string name)
+        public async Task Create(string name, string image)
         {
             var category = new Category()
             {
-                Name = name
+                Name = name,
+                Image = image
             };
 
             await this.categoriesRepository.AddAsync(category);

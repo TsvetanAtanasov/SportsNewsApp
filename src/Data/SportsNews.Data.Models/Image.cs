@@ -4,7 +4,7 @@
 
     public class Image : BaseModel<int>
     {
-        public string ImageUrl { get; set; }
+        public string Url { get; set; }
 
         public int ArticleId { get; set; }
 

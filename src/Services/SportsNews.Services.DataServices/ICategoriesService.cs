@@ -8,7 +8,7 @@
     {
         IEnumerable<CategoryIdAndNameViewModel> GetAll();
 
-        Task Create(string name);
+        Task Create(string name, string image);
 
         bool IsCategoryIdValid(int categoryId);
     }

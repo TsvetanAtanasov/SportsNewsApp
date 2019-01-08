@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsNews.Web.Models;
 
 namespace SportsNews.Data.Migrations
 {
     [DbContext(typeof(SportsNewsContext))]
-    partial class SportsNewsContextModelSnapshot : ModelSnapshot
+    [Migration("20190108160511_ImagePropToCategoryModel")]
+    partial class ImagePropToCategoryModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,7 +194,7 @@ namespace SportsNews.Data.Migrations
 
                     b.Property<int>("ArticleId");
 
-                    b.Property<string>("Url");
+                    b.Property<string>("ImageUrl");
 
                     b.HasKey("Id");
 
@@ -209,7 +211,7 @@ namespace SportsNews.Data.Migrations
 
                     b.Property<int>("ArticleId");
 
-                    b.Property<string>("Url");
+                    b.Property<string>("VideoUrl");
 
                     b.HasKey("Id");
 
