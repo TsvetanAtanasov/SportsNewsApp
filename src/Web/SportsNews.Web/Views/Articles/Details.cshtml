@@ -110,30 +110,36 @@
             <p class="lead">
                 @Model.Content
             </p>
-            <p>
-                <img src="https://www.maxim.com/.image/t_share/MTU0NjkxNTcyNjkxMTE3NDgw/conor-mcgregor-promo.jpg"
-                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
-            </p>
+            @if (@Model.Images.Any())
+            {
+                <p>
+                    <img src="@Model.Images.FirstOrDefault().Url"
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </p>
+            }
 
 
         </div> <!-- end s-content__main -->
         <div>
-    <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
-        <i class="glyphicon glyphicon-pencil"></i>  Edit Article
-    </a>
-    <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
-        <i class="glyphicon glyphicon-pencil"></i>  Add Image
-    </a>
-    <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
-        <i class="glyphicon glyphicon-pencil"></i>  Add Video
-    </a>
-    <form asp-action="Delete">
-        <div class="form-group">
-            <input type="hidden" name="id" value="@Model.Id" />
-            <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+            <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  Edit Article
+            </a>
+            <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  Add Image
+            </a>
+            <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  Add Video
+            </a>
+            <a asp-controller="Images" asp-action="AllByArticleId" asp-route-id="@Model.Id" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  See All Images
+            </a>
+            <form asp-action="Delete">
+                <div class="form-group">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                </div>
+            </form>
         </div>
-    </form>
-    </div>
 
     </article>
 
@@ -145,31 +151,42 @@
         <div id="comments" class="row">
             <div class="col-full">
 
-                <h3 class="h2">2 Comments</h3>
+                <h3 class="h2">@Model.Comments.Count() Comments</h3>
 
                 <!-- commentlist -->
                 <ol class="commentlist">
-                @foreach (var comment in Model.Comments)
-                {
-                    <li class="depth-1 comment">
-                        <div class="comment__content">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <li class="depth-1 comment">
+                            <div class="comment__content">
 
-                            <div class="comment__info">
-                                <cite>@comment.UserUsername</cite>
+                                <div class="comment__info">
+                                    <cite>@comment.UserUsername</cite>
+                                </div>
+
+                                <div class="comment__text">
+                                    Comment: <p>@comment.Content</p>
+                                </div>
+
+                                <form asp-controller="Comments" asp-action="Delete">
+                                    <div class="form-group">
+                                        <input type="hidden" name="id" value="@Model.Id" />
+                                        <input type="hidden" name="commentId" value="@comment.Id" />
+                                        <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                                    </div>
+                                </form>
+
                             </div>
 
-                            <div class="comment__text">
-                                Comment: <p>@comment.Content</p>
-                            </div>
+                        </li> <!-- end comment level 1 -->
+                    }
 
-                        </div>
-
-                    </li> <!-- end comment level 1 -->
-                }
-                
                 </ol>
             </div> <!-- end comments-wrap -->
         </div>
+        <a asp-controller="Comments" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+            <i class="glyphicon glyphicon-pencil"></i>  Create Comment
+        </a>
     </div>
 
 </section> <!-- s-content -->

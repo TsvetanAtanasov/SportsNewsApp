@@ -51,7 +51,7 @@
                 return this.View(input);
             }
 
-            var id = await this.articlesService.Create(input.CategoryId,input.Content);
+            var id = await this.articlesService.Create(input.CategoryId,input.Content, input.Title);
             return this.RedirectToAction("Details", new {id = id});
         }
 

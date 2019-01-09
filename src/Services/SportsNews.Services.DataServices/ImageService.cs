@@ -2,9 +2,12 @@
 
 namespace SportsNews.Services.DataServices
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Data.Common;
     using Data.Models;
+    using SportsNews.Services.Mapping;
+    using SportsNews.Services.Models.Images;
 
     public class ImageService : IImageService
     {
@@ -31,6 +34,15 @@ namespace SportsNews.Services.DataServices
             var image = this.imageRepository.All().FirstOrDefault(x => x.Id == id);
             this.imageRepository.Delete(image);
             await this.imageRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<ImageViewModel> GetAllByArticleId(int articleId)
+        {
+            var articles = this.imageRepository.All()
+                .Where(x => x.ArticleId == articleId)
+                .To<ImageViewModel>().ToList();
+
+            return articles;
         }
     }
 }

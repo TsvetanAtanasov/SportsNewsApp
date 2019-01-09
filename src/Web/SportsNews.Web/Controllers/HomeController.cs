@@ -11,30 +11,36 @@ namespace SportsNews.Web.Controllers
     using Data.Common;
     using Data.Models;
     using Services.DataServices;
+    using Services.Models.Categories;
     using Services.Models.Home;
     using SportsNews.Services.Models;
 
     public class HomeController : Controller
     {
-        private readonly IArticlesService articlesService;
+        private readonly ICategoriesService categoriesService;
 
-        public HomeController(IArticlesService articlesService)
+        public HomeController(ICategoriesService categoriesService)
         {
-            this.articlesService = articlesService;
+            this.categoriesService = categoriesService;
         }
         public IActionResult Index()
         {
-            var articles = this.articlesService.GetArticles();
-            var viewModel = new IndexViewModel
+            //var articles = this.articlesService.GetArticles();
+            //var viewModel = new IndexViewModel
+            //{
+            //    Articles = articles
+            //};
+            var categories = this.categoriesService.GetAll();
+            var viewModel = new AllCategoriesViewModel
             {
-                Articles = articles
+                Categories = categories
             };
             return View(viewModel);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = $"My application has {this.articlesService.GetCount()} articles.";
+            //ViewData["Message"] = $"My application has {this.articlesService.GetCount()} articles.";
 
             return View();
         }

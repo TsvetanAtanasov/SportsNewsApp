@@ -6,6 +6,7 @@
     using Services.DataServices;
     using System.Threading.Tasks;
     using Models.Images;
+    using Services.Models.Images;
 
     public class ImagesController : BaseController
     {
@@ -14,6 +15,16 @@
         public ImagesController(IImageService imagesService)
         {
             this.imagesService = imagesService;
+        }
+
+        public IActionResult AllByArticleId(int id)
+        {
+            var images = this.imagesService.GetAllByArticleId(id);
+            var viewModel = new AllImagesViewModel
+            {
+                Images = images
+            };
+            return this.View(viewModel);
         }
 
         [Authorize]
@@ -30,7 +41,7 @@
                 return this.View(model);
             }
             await this.imagesService.Create(id, model.ImageUrl);
-            return this.RedirectToAction("Details", "Articles", new { id = id });
+            return this.RedirectToAction("AllByArticleId", new { id = id });
         }
 
         [HttpPost]

@@ -10,5 +10,8 @@ namespace SportsNews.Services.Models.Articles
 
         [ValidCategoryId]
         public int CategoryId { get; set; }
+
+        [Required]
+        public string Title { get; set; }
     }
 }

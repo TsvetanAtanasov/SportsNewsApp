@@ -35,7 +35,7 @@
             }
 
             await this.categoriesService.Create(input.Name, input.Image);
-            return this.RedirectToAction("Index","Home");
+            return this.RedirectToAction("Index","Categories");
         }
 
         public IActionResult Index()

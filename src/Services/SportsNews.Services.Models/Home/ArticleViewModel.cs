@@ -4,7 +4,9 @@ using SportsNews.Services.Mapping;
 namespace SportsNews.Services.Models.Home
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Images;
+    using Microsoft.Extensions.FileProviders;
 
     public class ArticleViewModel : IMapFrom<Article>
     {
@@ -13,6 +15,19 @@ namespace SportsNews.Services.Models.Home
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        public string ShortContent
+        {
+            get
+            {
+                if (Content.Length > 200)
+                {
+                    return $"{Content.Substring(0, 150)} ...";
+                }
+
+                return Content;
+            }
+        }
 
         public string CategoryName { get; set; }
 

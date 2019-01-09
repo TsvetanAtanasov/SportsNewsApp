@@ -20,12 +20,13 @@
             this.categoryRepository = categoryRepository;
         }
 
-        public async Task<int> Create(int categoryId, string content)
+        public async Task<int> Create(int categoryId, string content, string title)
         {
             var article = new Article()
             {
                CategoryId = categoryId,
-               Content = content
+               Content = content,
+               Title = title
             };
 
             await this.articlesRepository.AddAsync(article);

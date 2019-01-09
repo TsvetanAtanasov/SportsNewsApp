@@ -6,7 +6,7 @@
 
     public interface ICategoriesService
     {
-        IEnumerable<CategoryIdAndNameViewModel> GetAll();
+        IEnumerable<CategoryViewModel> GetAll();
 
         Task Create(string name, string image);
 

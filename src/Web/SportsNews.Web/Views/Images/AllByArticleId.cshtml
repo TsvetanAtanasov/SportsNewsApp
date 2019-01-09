@@ -1,0 +1,29 @@
+﻿@model SportsNews.Services.Models.Images.AllImagesViewModel
+
+@{
+    this.ViewData["Title"] = "Images";
+}
+
+<div class="row masonry-wrap">
+    <div class="masonry">
+
+        <div class="grid-sizer"></div>
+        @foreach (var img in Model.Images)
+        {
+            <article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+                <div class="entry__thumb">
+                    <img src="@img.Url" alt="">
+                </div>
+
+            </article> <!-- end article -->
+        }
+
+    </div> <!-- end masonry -->
+    <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Images.FirstOrDefault().ArticleId" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Add Image
+    </a>
+    <a asp-controller="Articles" asp-action="Details" asp-route-id="@Model.Images.FirstOrDefault().ArticleId" class="btn btn-info">
+        <i class="glyphicon glyphicon-pencil"></i>  Back to Article
+    </a>
+</div> <!-- end masonry-wrap -->

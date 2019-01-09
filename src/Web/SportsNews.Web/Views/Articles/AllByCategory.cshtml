@@ -15,21 +15,23 @@
         <h1>Category: Football</h1>
     </div>
 </div>
-@foreach (var article in Model.Articles)
-{
-    <div class="row masonry-wrap">
-        <div class="masonry">
-
-            <div class="grid-sizer"></div>
-
+<div class="row masonry-wrap">
+    <div class="masonry">
+        <div class="grid-sizer"></div>
+        
+        @foreach (var article in Model.Articles)
+        {
             <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-                <div class="entry__thumb">
-                    <a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id" class="entry__thumb-link">
-                        <img src="@article.Images.FirstOrDefault().Url"
-                             srcset="@article.Images.FirstOrDefault().Url" alt="">
-                    </a>
-                </div>
+                @if (@article.Images.Any())
+                {
+                    <div class="entry__thumb">
+                        <a asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id" class="entry__thumb-link">
+                            <img src="@article.Images.FirstOrDefault().Url"
+                                 srcset="@article.Images.FirstOrDefault().Url" alt="">
+                        </a>
+                    </div>
+                }
 
                 <div class="entry__text">
                     <div class="entry__header">
@@ -39,12 +41,12 @@
                     </div>
                     <div class="entry__excerpt">
                         <p>
-                            @article.Content
+                            @article.ShortContent
                         </p>
                     </div>
                 </div>
 
             </article> <!-- end article -->
-        </div> <!-- end masonry -->
-    </div> <!-- end masonry-wrap -->
-}
+        }
+    </div>
+</div>

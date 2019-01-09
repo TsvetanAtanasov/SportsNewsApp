@@ -1,9 +1,39 @@
-﻿@model List<SportsNews.Services.Models.Categories.CategoryIdAndNameViewModel>
-@{}
+﻿@model List<SportsNews.Services.Models.Categories.CategoryViewModel>
+@{
+    ViewData["Title"] = "All Categories";
+}
 <div class="container">
-    @for (int i = 0; i < Model.Count(); i++)
-    {
-        <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model[i].Id">@Model[i].Name</a>
-        <hr />
-    }
+    <div class="row narrow">
+        <div class="col-full s-content__header" data-aos="fade-up">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+    </div>
+
+    <div class="row masonry-wrap">
+        <div class="masonry">
+
+            <div class="grid-sizer"></div>
+            @for(int i = 0; i < Model.Count(); i++)
+            {
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+
+                    <div class="entry__thumb">
+                        <a asp-controller="Articles" asp-action="AllByCategory" asp-route-id="@Model[i].Id" class="entry__thumb-link">
+                            <img src="@Model[i].Image" alt="">
+                        </a>
+                    </div>
+
+                    <div class="entry__text">
+                        <div class="entry__header">
+
+                        
+                            <h1 class="entry__title"><a href="raheem.html">@Model[i].Name</a></h1>
+
+                        </div>
+                    </div>
+
+                </article> <!-- end article -->
+            }
+        </div> <!-- end masonry -->
+    </div> <!-- end masonry-wrap -->
 </div>

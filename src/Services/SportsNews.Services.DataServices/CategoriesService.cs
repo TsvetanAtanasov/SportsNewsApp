@@ -29,10 +29,10 @@ namespace SportsNews.Services.DataServices
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<CategoryIdAndNameViewModel> GetAll()
+        public IEnumerable<CategoryViewModel> GetAll()
         {
             var categories = this.categoriesRepository.All().OrderBy(x => x.Name)
-                .Select(x => new CategoryIdAndNameViewModel{ Id = x.Id, Name = x.Name }).ToList();
+                .Select(x => new CategoryViewModel{ Id = x.Id, Name = x.Name, Image = x.Image}).ToList();
             return categories;
         }
 
