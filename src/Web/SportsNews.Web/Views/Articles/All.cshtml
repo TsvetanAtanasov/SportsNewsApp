@@ -1,21 +1,22 @@
 ﻿@model SportsNews.Services.Models.Home.IndexViewModel
 
 @{
-    ViewData["Title"] = "Articles By Category";
+    this.ViewData["Title"] = "All Articles";
 }
+
 <div class="row narrow">
     <div class="col-full s-content__header" data-aos="fade-up">
-        <h1>Category: Football</h1>
+        <h1>@this.ViewData["Title"]</h1>
     </div>
 </div>
 <div class="row masonry-wrap">
     <div class="masonry">
         <div class="grid-sizer"></div>
-        
+
         @foreach (var article in Model.Articles)
         {
             <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
+                <h3>Category: @article.CategoryName</h3>
                 @if (@article.Images.Any())
                 {
                     <div class="entry__thumb">

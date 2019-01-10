@@ -25,11 +25,6 @@ namespace SportsNews.Web.Controllers
         }
         public IActionResult Index()
         {
-            //var articles = this.articlesService.GetArticles();
-            //var viewModel = new IndexViewModel
-            //{
-            //    Articles = articles
-            //};
             var categories = this.categoriesService.GetAll();
             var viewModel = new AllCategoriesViewModel
             {

@@ -31,6 +31,16 @@
             return this.View(viewModel);
         }
 
+        public IActionResult All()
+        {
+            var articles = this.articlesService.GetArticles();
+            var viewModel = new IndexViewModel
+            {
+                Articles = articles
+            };
+            return this.View(viewModel);
+        }
+
         [Authorize]
         public IActionResult Create()
         {
