@@ -133,6 +133,9 @@
             <a asp-controller="Images" asp-action="AllByArticleId" asp-route-id="@Model.Id" class="btn btn-info">
                 <i class="glyphicon glyphicon-pencil"></i>  See All Images
             </a>
+            <a asp-controller="Videos" asp-action="AllByArticleId" asp-route-id="@Model.Id" class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  See All Videos
+            </a>
             <form asp-action="Delete">
                 <div class="form-group">
                     <input type="hidden" name="id" value="@Model.Id" />

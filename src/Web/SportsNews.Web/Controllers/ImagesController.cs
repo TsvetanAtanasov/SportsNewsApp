@@ -49,7 +49,7 @@
         {
 
             await this.imagesService.Delete(imageId);
-            return this.RedirectToAction("Details", "Articles", new { id = id });
+            return this.RedirectToAction("AllByArticleId", new { id = id });
         }
     }
 }

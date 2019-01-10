@@ -38,11 +38,11 @@ namespace SportsNews.Services.DataServices
 
         public IEnumerable<ImageViewModel> GetAllByArticleId(int articleId)
         {
-            var articles = this.imageRepository.All()
+            var images = this.imageRepository.All()
                 .Where(x => x.ArticleId == articleId)
                 .To<ImageViewModel>().ToList();
 
-            return articles;
+            return images;
         }
     }
 }

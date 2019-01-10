@@ -8,6 +8,8 @@ namespace SportsNews.Services.DataServices
 {
     using Data.Models;
     using SportsNews.Data.Common;
+    using SportsNews.Services.Mapping;
+    using SportsNews.Services.Models.Videos;
 
     public class VideosService : IVideosService
     {
@@ -19,21 +21,30 @@ namespace SportsNews.Services.DataServices
         }
         public async Task Create(int articleId, string videoUrl)
         {
-            var image = new Video()
+            var video = new Video()
             {
                 ArticleId = articleId,
                 Url = videoUrl
             };
 
-            await this.videosRepository.AddAsync(image);
+            await this.videosRepository.AddAsync(video);
             await this.videosRepository.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
         {
-            var image = this.videosRepository.All().FirstOrDefault(x => x.Id == id);
-            this.videosRepository.Delete(image);
+            var video = this.videosRepository.All().FirstOrDefault(x => x.Id == id);
+            this.videosRepository.Delete(video);
             await this.videosRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<VideoViewModel> GetAllByArticleId(int articleId)
+        {
+            var videos = this.videosRepository.All()
+                .Where(x => x.ArticleId == articleId)
+                .To<VideoViewModel>().ToList();
+
+            return videos;
         }
     }
 }

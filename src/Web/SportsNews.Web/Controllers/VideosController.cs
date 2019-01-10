@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Services.Controllers;
     using Services.DataServices;
+    using SportsNews.Services.Models.Videos;
     using SportsNews.Web.Models.Videos;
     using System.Threading.Tasks;
 
@@ -14,6 +15,16 @@
         public VideosController(IVideosService videosService)
         {
             this.videosService = videosService;
+        }
+
+        public IActionResult AllByArticleId(int id)
+        {
+            var videos = this.videosService.GetAllByArticleId(id);
+            var viewModel = new AllVideosViewModel
+            {
+                Videos = videos
+            };
+            return this.View(viewModel);
         }
 
         [Authorize]
@@ -30,7 +41,7 @@
                 return this.View(model);
             }
             await this.videosService.Create(id, model.VideoUrl);
-            return this.RedirectToAction("Details", "Articles", new { id = id });
+            return this.RedirectToAction("AllByArticleId", new { id = id });
         }
 
         [HttpPost]
@@ -38,7 +49,7 @@
         {
 
             await this.videosService.Delete(videoId);
-            return this.RedirectToAction("Details", "Articles", new { id = id });
+            return this.RedirectToAction("AllByArticleId", new { id = id });
         }
     }
 }

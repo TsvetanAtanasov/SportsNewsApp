@@ -7,9 +7,7 @@
     public interface IImageService
     {
         Task Create(int articleId, string imageUrl);
-
-
-
+        
         IEnumerable<ImageViewModel> GetAllByArticleId(int articleId);
 
         Task Delete(int id);
