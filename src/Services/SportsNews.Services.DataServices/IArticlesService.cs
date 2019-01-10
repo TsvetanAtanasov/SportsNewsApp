@@ -19,7 +19,7 @@ namespace SportsNews.Services.DataServices
 
         IEnumerable<ArticleViewModel> GetAllByCategory(int categoryId);
 
-        Task Update(int articleId, string content, int categoryId);
+        Task Update(int articleId, string content, int categoryId, string title);
 
         Task Delete(int id);
     }

@@ -25,13 +25,14 @@ namespace SportsNews.Web.Controllers
             this.commentsService = commentsService;
             this.userManager = userManager;
         }
-
+        
         [Authorize]
         public IActionResult Create(int id)
         {
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(int id, CreateCommentInputModel model)
         {
@@ -48,8 +49,10 @@ namespace SportsNews.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id, int commentId)
         {
-
-            await this.commentsService.Delete(commentId);
+            if (this.User.IsInRole("Administrator"))
+            {
+                await this.commentsService.Delete(commentId);
+            }
             return this.RedirectToAction("Details", "Articles", new { id = id });
         }
     }

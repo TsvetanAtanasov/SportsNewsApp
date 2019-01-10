@@ -120,30 +120,36 @@
 
 
         </div> <!-- end s-content__main -->
+        @if (this.User.IsInRole("Administrator"))
+        {
+            <div>
+                <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
+                    <i class="glyphicon glyphicon-pencil"></i>  Edit Article
+                </a>
+                <form asp-action="Delete">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                    </div>
+                </form>
+            </div>
+            <div>
+                <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+                    <i class="glyphicon glyphicon-pencil"></i>  Add Image
+                </a>
+                <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
+                    <i class="glyphicon glyphicon-pencil"></i>  Add Video
+                </a>
+            </div>
+        }
         <div>
-            <a asp-controller="Articles" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-info">
-                <i class="glyphicon glyphicon-pencil"></i>  Edit Article
-            </a>
-            <a asp-controller="Images" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
-                <i class="glyphicon glyphicon-pencil"></i>  Add Image
-            </a>
-            <a asp-controller="Videos" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-info">
-                <i class="glyphicon glyphicon-pencil"></i>  Add Video
-            </a>
             <a asp-controller="Images" asp-action="AllByArticleId" asp-route-id="@Model.Id" class="btn btn-info">
                 <i class="glyphicon glyphicon-pencil"></i>  See All Images
             </a>
             <a asp-controller="Videos" asp-action="AllByArticleId" asp-route-id="@Model.Id" class="btn btn-info">
                 <i class="glyphicon glyphicon-pencil"></i>  See All Videos
             </a>
-            <form asp-action="Delete">
-                <div class="form-group">
-                    <input type="hidden" name="id" value="@Model.Id" />
-                    <input type="submit" value="Delete Article" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-                </div>
-            </form>
         </div>
-
     </article>
 
 
@@ -170,14 +176,16 @@
                                 <div class="comment__text">
                                     Comment: <p>@comment.Content</p>
                                 </div>
-
-                                <form asp-controller="Comments" asp-action="Delete">
-                                    <div class="form-group">
-                                        <input type="hidden" name="id" value="@Model.Id" />
-                                        <input type="hidden" name="commentId" value="@comment.Id" />
-                                        <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
-                                    </div>
-                                </form>
+                                @if (this.User.IsInRole("Administrator"))
+                                {
+                                    <form asp-controller="Comments" asp-action="Delete">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" value="@Model.Id" />
+                                            <input type="hidden" name="commentId" value="@comment.Id" />
+                                            <input type="submit" value="Delete Comment" class="btn btn-default" onclick="return confirm('Are you sure you wish to delete ?');" />
+                                        </div>
+                                    </form>
+                                }
 
                             </div>
 

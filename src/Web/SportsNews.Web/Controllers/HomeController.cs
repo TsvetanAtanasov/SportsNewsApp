@@ -33,13 +33,6 @@ namespace SportsNews.Web.Controllers
             return View(viewModel);
         }
 
-        public IActionResult About()
-        {
-            //ViewData["Message"] = $"My application has {this.articlesService.GetCount()} articles.";
-
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();

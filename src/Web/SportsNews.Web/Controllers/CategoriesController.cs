@@ -19,13 +19,18 @@
             this.categoriesService = categoriesService;
             this.articlesService = articlesService;
         }
-
-        [Authorize]
+        
         public IActionResult Create()
         {
-            return this.View();
+            if (this.User.IsInRole("Administrator"))
+            {
+                return this.View();
+            }
+
+            return this.RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateCategoryInputModel input)
         {
@@ -38,13 +43,15 @@
             return this.RedirectToAction("Index","Categories");
         }
 
+        [Authorize]
         public IActionResult Index()
         {
-            var categories = this.categoriesService.GetAll().ToList();
-            
-            return this.View(categories);
+                var categories = this.categoriesService.GetAll().ToList();
+
+                return this.View(categories);
         }
 
+        [Authorize]
         public IActionResult Details(int id)
         {
             var articlesInCategory = this.articlesService.GetAllByCategory(id).ToList();

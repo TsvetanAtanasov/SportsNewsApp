@@ -17,6 +17,7 @@
             this.videosService = videosService;
         }
 
+        [Authorize]
         public IActionResult AllByArticleId(int id)
         {
             var videos = this.videosService.GetAllByArticleId(id);
@@ -36,19 +37,24 @@
         [HttpPost]
         public async Task<IActionResult> Create(int id, CreateVideoInputModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (this.User.IsInRole("Administrator"))
             {
-                return this.View(model);
+                if (!this.ModelState.IsValid)
+                {
+                    return this.View(model);
+                }
+                await this.videosService.Create(id, model.VideoUrl);
             }
-            await this.videosService.Create(id, model.VideoUrl);
             return this.RedirectToAction("AllByArticleId", new { id = id });
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id, int videoId)
         {
-
-            await this.videosService.Delete(videoId);
+            if (this.User.IsInRole("Administrator"))
+            {
+                await this.videosService.Delete(videoId);
+            }
             return this.RedirectToAction("AllByArticleId", new { id = id });
         }
     }

@@ -48,7 +48,6 @@ namespace SportsNews.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddDbContext<SportsNewsContext>(options =>
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
@@ -91,10 +90,21 @@ namespace SportsNews.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.Use(async (context, next) => {
+                var request = context.Request;
+                if (request.Path == "/Account/Login")
+                {
+                    context.Response.Redirect("/Identity/Account/Login");
+                }
+                else
+                {
+                    await next.Invoke();
+                }
+            });
             app.UseMiddleware<SeedAdminMiddleware>();
             app.UseAuthentication();
             app.UseMvc(routes =>

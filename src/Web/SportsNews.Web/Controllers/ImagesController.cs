@@ -17,6 +17,7 @@
             this.imagesService = imagesService;
         }
 
+        [Authorize]
         public IActionResult AllByArticleId(int id)
         {
             var images = this.imagesService.GetAllByArticleId(id);
@@ -26,29 +27,38 @@
             };
             return this.View(viewModel);
         }
-
-        [Authorize]
+        
         public IActionResult Create(int id)
         {
-            return this.View();
-        }
+            if (this.User.IsInRole("Administrator"))
+            {
+                return this.View();
+            }
 
+            return this.RedirectToAction("Index", "Home");
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Create(int id, CreateImageInputModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (this.User.IsInRole("Administrator"))
             {
-                return this.View(model);
+                if (!this.ModelState.IsValid)
+                {
+                    return this.View(model);
+                }
+                await this.imagesService.Create(id, model.ImageUrl);
             }
-            await this.imagesService.Create(id, model.ImageUrl);
             return this.RedirectToAction("AllByArticleId", new { id = id });
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Delete(int id, int imageId)
         {
-
-            await this.imagesService.Delete(imageId);
+            if (this.User.IsInRole("Administrator"))
+            {
+                await this.imagesService.Delete(imageId);
+            }
             return this.RedirectToAction("AllByArticleId", new { id = id });
         }
     }

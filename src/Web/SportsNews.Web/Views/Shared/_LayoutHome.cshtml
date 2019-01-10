@@ -30,8 +30,8 @@
             <div class="header__content row">
 
                 <div class="header__logo">
-                    <a class="logo" href="index.html">
-                        <img src="images/logoSports.png" alt="Homepage">
+                    <a class="logo" asp-controller="Home" asp-action="Index">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToLqPeokepRVpQ_qfJsXFwzu3kWTt-y5XEHLKK8xYtcveJK0Jv" alt="Homepage">
                     </a>
                 </div> <!-- end header__logo -->
 
@@ -44,30 +44,12 @@
 
                     <ul class="header__nav">
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Categories" asp-action="Create">Create Category</a></li>
-                        <li class="has-children">
-                            <a href="#0" title="">Categories</a>
-                            <ul class="sub-menu">
-                                <li><a href="category.html">Lifestyle</a></li>
-                                <li><a href="category.html">Health</a></li>
-                                <li><a href="category.html">Family</a></li>
-                                <li><a href="category.html">Management</a></li>
-                                <li><a href="category.html">Travel</a></li>
-                                <li><a href="category.html">Work</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-children">
-                            <a href="#0" title="">Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="single-video.html">Video Post</a></li>
-                                <li><a href="single-audio.html">Audio Post</a></li>
-                                <li><a href="single-gallery.html">Gallery Post</a></li>
-                                <li><a href="single-standard.html">Standard Post</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="style-guide.html" title="">Styles</a></li>
-                        <li class="current"><a asp-controller="Home" asp-action="About" title="">About</a></li>
-                        <li><a href="contact.html" title="">Contact</a></li>
+                        @if (this.User.IsInRole("Administrator"))
+                        {
+                            <li><a asp-controller="Categories" asp-action="Create">Create Category</a></li>
+                        }
+                        <li><a asp-controller="Categories" asp-action="Index">Categories</a></li>
+                        <li><a asp-controller="Articles" asp-action="All">All Articles</a></li>
                         <partial name="_LoginPartial" />
                     </ul> <!-- end header__nav -->
 
