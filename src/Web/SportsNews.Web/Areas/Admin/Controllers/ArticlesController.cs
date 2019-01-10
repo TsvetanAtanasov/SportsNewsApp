@@ -48,13 +48,20 @@
                 var id = await this.articlesService.Create(input.CategoryId, input.Content, input.Title);
                 return this.RedirectToAction("Details", new { id = id });
             }
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("AllByCategory", new {id = input.CategoryId});
         }
 
         public IActionResult Update(int id)
         {
             if (this.User.IsInRole("Administrator"))
             {
+                this.ViewData["Categories"] = this.categoriesService.GetAll()
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Id.ToString(),
+                        Text = x.Name
+                    });
+
                 var model = this.articlesService.GetArticles()
                     .Where(x => x.Id == id)
                     .Select(x => new UpdateArticleInputModel

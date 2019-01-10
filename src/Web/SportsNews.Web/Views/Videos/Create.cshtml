@@ -4,15 +4,13 @@
     ViewData["Title"] = "Create Video";
 }
 
-<h2>@ViewData["Title"]</h2>
-
 <div class="row">
     <div class="col-full">
         <div class="respond">
             <form asp-controller="Videos" asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <fieldset>
-                    <h4>Add Video</h4>
+                    <h2>Add Video</h2>
                     <hr />
                     <div class="form-field">
                         <label asp-for="@Model.VideoUrl"></label>

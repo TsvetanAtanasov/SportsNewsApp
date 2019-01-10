@@ -4,15 +4,13 @@
     ViewData["Title"] = "Create Image";
 }
 
-<h2>@ViewData["Title"]</h2>
-
 <div class="row">
     <div class="col-full">
         <div class="respond">
             <form asp-controller="Images" asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <fieldset>
-                    <h4>Add Image</h4>
+                    <h2>Add Image</h2>
                     <hr />
                     <div class="form-field">
                         <label asp-for="@Model.ImageUrl"></label>

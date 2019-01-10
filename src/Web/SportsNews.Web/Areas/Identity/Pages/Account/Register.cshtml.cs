@@ -54,9 +54,14 @@ namespace SportsNews.Web.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
-        public void OnGet(string returnUrl = null)
+        public IActionResult OnGet(string returnUrl = null)
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
             ReturnUrl = returnUrl;
+            return null;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

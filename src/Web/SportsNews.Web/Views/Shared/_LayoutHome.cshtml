@@ -47,6 +47,7 @@
                         @if (this.User.IsInRole("Administrator"))
                         {
                             <li><a asp-controller="Categories" asp-action="Create">Create Category</a></li>
+                            <li><a asp-controller="Articles" asp-action="Create">Create Article</a></li>
                         }
                         <li><a asp-controller="Categories" asp-action="Index">Categories</a></li>
                         <li><a asp-controller="Articles" asp-action="All">All Articles</a></li>

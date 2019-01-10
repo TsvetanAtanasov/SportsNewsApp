@@ -91,11 +91,12 @@ namespace SportsNews.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.Use(async (context, next) => {
+            app.Use(async (context, next) =>
+            {
                 var request = context.Request;
                 if (request.Path == "/Account/Login")
                 {
