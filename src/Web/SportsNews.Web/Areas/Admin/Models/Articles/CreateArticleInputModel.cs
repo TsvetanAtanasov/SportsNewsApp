@@ -5,8 +5,10 @@ namespace SportsNews.Web.Areas.Admin.Models.Articles
 {
     public class CreateArticleInputModel
     {
+        private const int ContentMinLength = 20;
+
         [Required]
-        [MinLength(20)]
+        [MinLength(ContentMinLength)]
         public string Content { get; set; }
 
         [ValidCategoryId]

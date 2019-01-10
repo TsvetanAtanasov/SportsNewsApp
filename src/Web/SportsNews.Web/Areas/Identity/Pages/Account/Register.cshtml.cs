@@ -72,10 +72,6 @@ namespace SportsNews.Web.Areas.Identity.Pages.Account
                 var user = new SportsNewsUser { UserName = Input.Email, Email = Input.Email};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 var roleResult = await this._userManager.AddToRoleAsync(user, "User");
-                //if (!roleResult.Succeeded)
-                //{
-                //    throw new InvalidOperationException();
-                //}
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

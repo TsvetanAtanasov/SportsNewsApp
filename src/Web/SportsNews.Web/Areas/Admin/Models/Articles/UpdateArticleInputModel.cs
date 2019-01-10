@@ -13,10 +13,13 @@ namespace SportsNews.Web.Areas.Admin.Models.Articles
 
     public class UpdateArticleInputModel : IMapFrom<Article>
     {
+        private const int ContentMinLength = 20;
+
+
         public int Id { get; set; }
 
         [Required]
-        [MinLength(20)]
+        [MinLength(ContentMinLength)]
         public string Content { get; set; }
 
         [ValidCategoryId]
