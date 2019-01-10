@@ -23,6 +23,7 @@ namespace SportsNews.Web
     using Services.Mapping;
     using Services.Models.Articles;
     using Services.Models.Home;
+    using SportsNews.Web.Areas.Admin.Models.Articles;
 
     public class Startup
     {

@@ -1,4 +1,4 @@
-﻿namespace SportsNews.Web.Models.Categories
+﻿namespace SportsNews.Web.Areas.Admin.Models.Categories
 {
     public class CreateCategoryInputModel
     {

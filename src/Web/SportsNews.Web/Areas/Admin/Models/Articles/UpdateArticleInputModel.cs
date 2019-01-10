@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportsNews.Web.Models.Articles
+namespace SportsNews.Web.Areas.Admin.Models.Articles
 {
     using Data.Models;
     using Services.Mapping;

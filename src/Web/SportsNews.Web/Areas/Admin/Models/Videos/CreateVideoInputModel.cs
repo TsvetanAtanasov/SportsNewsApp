@@ -1,4 +1,4 @@
-﻿namespace SportsNews.Web.Models.Videos
+﻿namespace SportsNews.Web.Areas.Admin.Models.Videos
 {
     public class CreateVideoInputModel
     {

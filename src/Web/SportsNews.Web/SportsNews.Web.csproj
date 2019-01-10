@@ -109,4 +109,13 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Models\Articles\" />
+    <Folder Include="Models\Categories\" />
+    <Folder Include="Models\Images\" />
+    <Folder Include="Models\Videos\" />
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Services.Controllers;
     using Services.DataServices;
-    using SportsNews.Web.Models.Categories;
+    using SportsNews.Web.Areas.Admin.Models.Categories;
 
     public class CategoriesController : BaseController
     {
@@ -18,29 +18,6 @@
         {
             this.categoriesService = categoriesService;
             this.articlesService = articlesService;
-        }
-        
-        public IActionResult Create()
-        {
-            if (this.User.IsInRole("Administrator"))
-            {
-                return this.View();
-            }
-
-            return this.RedirectToAction("Index", "Home");
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateCategoryInputModel input)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
-
-            await this.categoriesService.Create(input.Name, input.Image);
-            return this.RedirectToAction("Index","Categories");
         }
 
         [Authorize]

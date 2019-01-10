@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SportsNews.Services.Models.Articles;
+using System.ComponentModel.DataAnnotations;
 
-namespace SportsNews.Services.Models.Articles
+namespace SportsNews.Web.Areas.Admin.Models.Articles
 {
     public class CreateArticleInputModel
     {

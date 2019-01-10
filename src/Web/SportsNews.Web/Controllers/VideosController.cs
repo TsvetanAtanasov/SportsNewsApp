@@ -5,7 +5,6 @@
     using Services.Controllers;
     using Services.DataServices;
     using SportsNews.Services.Models.Videos;
-    using SportsNews.Web.Models.Videos;
     using System.Threading.Tasks;
 
     public class VideosController : BaseController
@@ -26,36 +25,6 @@
                 Videos = videos
             };
             return this.View(viewModel);
-        }
-
-        [Authorize]
-        public IActionResult Create(int id)
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(int id, CreateVideoInputModel model)
-        {
-            if (this.User.IsInRole("Administrator"))
-            {
-                if (!this.ModelState.IsValid)
-                {
-                    return this.View(model);
-                }
-                await this.videosService.Create(id, model.VideoUrl);
-            }
-            return this.RedirectToAction("AllByArticleId", new { id = id });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id, int videoId)
-        {
-            if (this.User.IsInRole("Administrator"))
-            {
-                await this.videosService.Delete(videoId);
-            }
-            return this.RedirectToAction("AllByArticleId", new { id = id });
         }
     }
 }

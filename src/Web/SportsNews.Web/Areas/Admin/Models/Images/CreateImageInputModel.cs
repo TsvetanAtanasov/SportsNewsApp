@@ -1,4 +1,4 @@
-﻿namespace SportsNews.Web.Models.Images
+﻿namespace SportsNews.Web.Areas.Admin.Models
 {
     public class CreateImageInputModel
     {
