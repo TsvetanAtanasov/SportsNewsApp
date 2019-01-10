@@ -52,5 +52,61 @@ namespace SportsNews.Services.DataServices.Tests
             Assert.Equal(3, count);
 
         }
+
+        [Fact]
+        public async Task CreateArticleShouldBeSuccessfull()
+        {
+            var options = new DbContextOptionsBuilder<SportsNewsContext>()
+                .UseInMemoryDatabase(databaseName: "Find_User_Database2")
+                .Options;
+
+            var dbContext = new SportsNewsContext(options);
+
+            var repository = new DbRepository<Article>(dbContext);
+            var articlesService = new ArticlesService(repository, null);
+
+            await articlesService.Create(1, "sdsda", "dasasd");
+            var count = articlesService.GetCount();
+
+            Assert.Equal(1, count);
+        }
+
+        [Fact]
+        public async Task DeleteArticleShouldBeSuccessfull()
+        {
+            var options = new DbContextOptionsBuilder<SportsNewsContext>()
+                .UseInMemoryDatabase(databaseName: "Find_User_Database3")
+                .Options;
+
+            var dbContext = new SportsNewsContext(options);
+            var repository = new DbRepository<Article>(dbContext);
+            var articlesService = new ArticlesService(repository, null);
+
+            await articlesService.Create(1, "sdsda", "dasasd");
+            await articlesService.Create(1, "sdsda", "dasasd");
+            await articlesService.Create(1, "sdsda", "dasasd");
+            var id = repository.All().FirstOrDefault().Id;
+            await articlesService.Delete(id); 
+            var count = repository.All().Count();
+            Assert.Equal(2, count);
+        }
+
+        [Fact]
+        public async Task UpdateArticleShouldBeSuccessfull()
+        {
+            var options = new DbContextOptionsBuilder<SportsNewsContext>()
+                .UseInMemoryDatabase(databaseName: "Find_User_Database4")
+                .Options;
+
+            var dbContext = new SportsNewsContext(options);
+            var repository = new DbRepository<Article>(dbContext);
+            var articlesService = new ArticlesService(repository, null);
+
+            await articlesService.Create(1, "sdsda", "dasasd");
+            var id = repository.All().FirstOrDefault().Id;
+            await articlesService.Update(id, "Changed", 2,"Ok");
+            var article = repository.All().FirstOrDefault();
+            Assert.Equal("Changed", article.Content);
+        }
     }
 }
