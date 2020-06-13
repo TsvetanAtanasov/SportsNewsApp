@@ -9,6 +9,15 @@
         <h1>@this.ViewData["Title"]</h1>
     </div>
 </div>
+
+@using (Html.BeginForm("All", "Articles", FormMethod.Get))
+{
+    <form>
+        <label for="search" style="font-size: medium">Search for an article title</label>
+        @Html.TextBox("searching")<input type="submit" id="search" value="Search" required="required"/>
+    </form>
+}
+
 <div class="row masonry-wrap">
     <div class="masonry">
         <div class="grid-sizer"></div>

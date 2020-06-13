@@ -1,5 +1,6 @@
 ﻿namespace SportsNews.Services.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
     using DataServices;
@@ -20,9 +21,13 @@
             this.categoriesService = categoriesService;
         }
         [Authorize]
-        public IActionResult AllByCategory(int id)
+        public IActionResult AllByCategory(int id, string searching)
         {
             var articles = this.articlesService.GetAllByCategory(id);
+            if (searching != null)
+            {
+                articles = articles.Where(x => x.Title.Contains(searching, StringComparison.InvariantCultureIgnoreCase));
+            }
             var viewModel = new IndexViewModel
             {
                 Articles = articles
@@ -31,9 +36,13 @@
         }
 
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(string searching)
         {
             var articles = this.articlesService.GetArticles();
+            if (searching != null)
+            {
+                articles = articles.Where(x => x.Title.Contains(searching, StringComparison.InvariantCultureIgnoreCase));
+            }
             var viewModel = new IndexViewModel
             {
                 Articles = articles
